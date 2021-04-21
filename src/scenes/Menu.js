@@ -4,9 +4,9 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-        this.load.audio('sfx_select', './assets/assets_blip_select12.wav');
-        this.load.audio('sfx_explosion', './assets/assets_explosion38.wav');
-        this.load.audio('sfx_rocket', './assets/assets_rocket_shot.wav');
+        this.load.audio('sfx_select', './assets/select.wav'); 
+        this.load.audio('sfx_pop', './assets/pop.ogg');
+        this.load.audio('sfx_frog', './assets/jump.ogg');
     }
     create() {
         let menuConfig = {
@@ -23,8 +23,8 @@ class Menu extends Phaser.Scene {
         }
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - 
-            borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use <- -> arrows to move & (F) to fire', 
+            borderPadding, 'Frog Fantasy VMM', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'Use <- -> arrows to move & (F) to leap', 
             menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = "#00FF00";
         menuConfig.color = '#000';
@@ -38,7 +38,7 @@ class Menu extends Phaser.Scene {
     update() {
         if(Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             game.settings = {
-                spaceshipSpeed: 3,
+                flySpeed: 3,
                 gameTimer: 60000
             }
             this.sound.play('sfx_select');
@@ -46,7 +46,7 @@ class Menu extends Phaser.Scene {
         }
         if(Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             game.settings = {
-                spaceshipSpeed: 4,
+                flySpeed: 4,
                 gameTimer: 45000
             }
             this.sound.play('sfx_select');
